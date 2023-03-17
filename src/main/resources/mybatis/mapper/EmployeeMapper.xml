@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanyo.mapper.EmployeeMapper">
+
+    <insert id="addEmployee" parameterType="employee">
+        insert into employees(lastName,email,gender,dept_id,birth)
+        values (#{lastName},#{email},#{gender},#{dept_id},#{birth})
+    </insert>
+
+    <select id="getEmployeeById" parameterType="int" resultType="employee">
+        select * from employees where id = #{id}
+    </select>
+
+    <select id="getAllEmployee" resultType="employee">
+        select * from employees
+    </select>
+
+    <delete id="deleteEmployeeById" parameterType="int">
+        delete from employees where id = #{id}
+    </delete>
+
+    <update id="updateEmployee" parameterType="employee" >
+        update employees
+        set lastName = #{lastName} , email = #{email} , gender = #{gender} , dept_id = #{dept_id} , birth = #{birth}
+        where id = #{id};
+    </update>
+</mapper>
